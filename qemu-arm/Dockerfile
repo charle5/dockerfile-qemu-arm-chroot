@@ -1,11 +1,10 @@
-FROM dockerfile/ubuntu:latest
-MAINTAINER David Weinstein <dweinst@insitusec.com>
+FROM nfnty/arch-devel:latest
+MAINTAINER charle5 <charle5@example.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV ARCH_FRONTEND noninteractive
 
-RUN apt-get -qq -y update
-RUN apt-get -qq -y install qemu-user qemu-user-static
-RUN apt-get clean
+RUN pacman -Syu
+RUN pacman -U https://aur.archlinux.org/packages/qe/qemu-arm-static/qemu-arm-static.tar.gz
 
 WORKDIR /
 VOLUME /data
